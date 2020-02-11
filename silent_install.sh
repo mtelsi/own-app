@@ -9,9 +9,9 @@ sudo apt-get -y install php-gd php-zip php-mbstring php-simplexml php-curl php-x
 echo \<center\>\<h1\>My Demo App\</h1\>\<br/\>\</center\> > /var/www/html/phpinfo.php
 echo \<\?php phpinfo\(\)\; \?\> >> /var/www/html/phpinfo.php
 
-ex /etc/apache2/apache2.conf <<EOEX
-  :172 s/AllowOverride None/AllowOverride All
-  :x
+ex /etc/apache2/apache2.conf <<EOEX \
+  :172 s/AllowOverride None/AllowOverride All \
+  :x \
 EOEX
 
 apachectl restart

@@ -14,24 +14,24 @@ ex /etc/apache2/apache2.conf <<EOEX
   :x
 EOEX
 
-sudo echo 'EXPECTED_CHECKSUM="$(wget -q -O - https://composer.github.io/installer.sig)"
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+#sudo echo 'EXPECTED_CHECKSUM="$(wget -q -O - https://composer.github.io/installer.sig)"
+#php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+#ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
 
-if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
-then
-    >&2 echo 'ERROR: Invalid installer checksum'
-    rm composer-setup.php
-    exit 1
-fi
+#if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
+#then
+#    >&2 echo 'ERROR: Invalid installer checksum'
+#    rm composer-setup.php
+#    exit 1
+#fi
 
-php composer-setup.php --quiet
-RESULT=$?
-rm composer-setup.php
-exit $RESULT' > /home/ubuntu/installcomposer.sh
+#php composer-setup.php --quiet
+#RESULT=$?
+#rm composer-setup.php
+#exit $RESULT' > /home/ubuntu/installcomposer.sh
 
-sudo chmod +x /home/ubuntu/installcomposer.sh
-sudo /home/ubuntu/installcomposer.sh
+#sudo chmod +x /home/ubuntu/installcomposer.sh
+#sudo /home/ubuntu/installcomposer.sh
 
 free -m
 
@@ -40,6 +40,7 @@ sudo /sbin/mkswap /var/swap.1
 sudo /sbin/swapon /var/swap.1
 
 cd /tmp
+curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 cd /var/www/html
 sudo composer create-project laravel/laravel your-project --prefer-dist
@@ -61,9 +62,9 @@ sudo echo "<VirtualHost *:80>
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>" > /etc/apache2/sites-available/laravel.conf
 
-sudo a2dissite 000-default.conf
-sudo a2ensite laravel.conf
-sudo a2enmod rewrite
+#sudo a2dissite 000-default.conf
+#sudo a2ensite laravel.conf
+#sudo a2enmod rewrite
 sudo service apache2 restart
 
 

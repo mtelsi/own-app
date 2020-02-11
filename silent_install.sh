@@ -71,11 +71,13 @@ cd /var/www/html
 
 sudo composer global require laravel/installer
 
-sudo composer create-project --prefer-dist laravel/laravel blog
+sudo ~/.composer/vendor/bin/laravel new blog
 
-sudo chgrp -R www-data /var/www/html/blog
+#sudo composer create-project --prefer-dist laravel/laravel blog
 
-sudo chmod -R 775 /var/www/html/blog/storage
+#sudo chgrp -R www-data /var/www/html/blog
+
+#sudo chmod -R 775 /var/www/html/blog/storage
 
 sudo systemctl restart apache2
 

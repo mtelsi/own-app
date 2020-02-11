@@ -58,6 +58,8 @@ cd /var/www/html
 
 composer global require laravel/installer
 composer create-project --prefer-dist laravel/laravel blog
+sudo chgrp -R www-data /var/www/html/blog
+#sudo chmod -R 775 /var/www/html/blog/storage
 
 #sudo composer create-project laravel/laravel your-project --prefer-dist
 #sudo chgrp -R www-data /var/www/html/your-project

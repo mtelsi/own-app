@@ -38,7 +38,7 @@ sudo /sbin/mkswap /var/swap.1
 sudo /sbin/swapon /var/swap.1
 
 composer global require laravel/installer
-export PATH="~/.config/composer/vendor/bin:/var/www/html"
+composer self-update
 laravel new blog
 composer create-project --prefer-dist laravel/laravel blog
 php artisan serve

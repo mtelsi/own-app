@@ -37,10 +37,8 @@ sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 sudo /sbin/mkswap /var/swap.1
 sudo /sbin/swapon /var/swap.1
 
-cd /var/www/html
-
 composer global require laravel/installer
-cd /var/www/html
+export PATH="~/.config/composer/vendor/bin:/var/www/html"
 laravel new blog
 composer create-project --prefer-dist laravel/laravel blog
 php artisan serve

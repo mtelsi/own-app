@@ -25,7 +25,7 @@ fi
 
 php composer-setup.php --quiet
 RESULT=$?
-rm composer-setup.php
+sudo rm composer-setup.php
 exit $RESULT' > /home/ubuntu/installcomposer.sh
 
 sudo chmod +x /home/ubuntu/installcomposer.sh
@@ -40,8 +40,8 @@ sudo /sbin/swapon /var/swap.1
 cd /var/www/html
 
 composer global require laravel/installer
-laravel new blog
 cd /var/www/html
+laravel new blog
 composer create-project --prefer-dist laravel/laravel blog
 php artisan serve
 

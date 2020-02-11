@@ -13,8 +13,6 @@ sudo ex /etc/apache2/apache2.conf <<EOEX \
   :x \
 EOEX
 
-sudo apachectl restart
-
 sudo apt-get -y install composer
 
 EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)" \

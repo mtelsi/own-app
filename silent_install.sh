@@ -37,9 +37,31 @@ sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 sudo /sbin/mkswap /var/swap.1
 sudo /sbin/swapon /var/swap.1
 
-composer global require laravel/installer
-composer self-update
-laravel new blog
-composer create-project --prefer-dist laravel/laravel blog
-php artisan serve
+cd /tmp
+sudo mv composer.phar /usr/local/bin/composer
+cd /var/www/html
+sudo composer create-project laravel/laravel your-project --prefer-dist
+sudo chgrp -R www-data /var/www/html/your-project
+sudo chmod -R 775 /var/www/html/your-project/storage
+cd /etc/apache2/sites-available
+
+sudo echo "<VirtualHost *:80>
+    ServerName yourdomain.tld
+
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html/your-project/public
+
+    <Directory /var/www/html/your-project>
+        AllowOverride All
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>" > /etc/apache2/sites-available/laravel.conf
+
+sudo a2dissite 000-default.conf
+sudo a2ensite laravel.conf
+sudo a2enmod rewrite
+sudo service apache2 restart
+
 

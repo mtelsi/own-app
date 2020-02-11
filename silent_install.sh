@@ -20,7 +20,7 @@ apachectl restart
 sudo apt-get -y install composer
 
 EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)" \
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 ACTUAL_SIGNATURE="$(php -r "echo hash_file('sha384', 'composer-setup.php');")" \
 
 if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ] \
@@ -30,16 +30,15 @@ then \
     exit 1 \
 fi \
 
-php composer-setup.php --quiet \
+sudo php composer-setup.php --quiet \
 RESULT=$? \
-rm composer-setup.php \
+sudo rm composer-setup.php \
 exit $RESULT
 
 cd /var/www/html
 
-composer global require laravel/installer
-laravel new blog
-composer create-project --prefer-dist laravel/laravel blog
-php artisan serve
+sudo composer global require laravel/installer
+sudo laravel new blog
+sudo composer create-project --prefer-dist laravel/laravel blog
+sudo php artisan serve
 
-exit

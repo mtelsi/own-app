@@ -18,6 +18,8 @@ EOEX
 
 apachectl restart
 
+sudo apt-get -y install composer
+
 EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)" \
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 ACTUAL_SIGNATURE="$(php -r "echo hash_file('sha384', 'composer-setup.php');")" \
@@ -34,7 +36,6 @@ RESULT=$? \
 rm composer-setup.php \
 exit $RESULT
 
-sudo apt-get -y install composer
 composer global require laravel/installer
 laravel new blog
 composer create-project --prefer-dist laravel/laravel blog

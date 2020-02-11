@@ -36,6 +36,10 @@ RESULT=$? \
 rm composer-setup.php \
 exit $RESULT
 
+sudo -i
+
+cd /var/www/html
+
 composer global require laravel/installer
 laravel new blog
 composer create-project --prefer-dist laravel/laravel blog

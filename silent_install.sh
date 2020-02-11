@@ -9,12 +9,11 @@ sudo apt install software-properties-common
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get -y install apache2 php mysql-server
 sudo apt-get -y install php libapache2-mod-php
-sudo systemctl restart apache2
+
 sudo apt-get -y install php-mysql php-gd php-zip php-mbstring php-simplexml php-curl php-xml php-xmlrpc php-intl
 echo \<center\>\<h1\>My Demo App\</h1\>\<br/\>\</center\> > /var/www/html/phpinfo.php
 echo \<\?php phpinfo\(\)\; \?\> >> /var/www/html/phpinfo.php
 
-apachectl restart
 
 ex /etc/apache2/apache2.conf <<EOEX
   :172 s/AllowOverride None/AllowOverride All
@@ -59,7 +58,11 @@ cd /var/www/html
 composer global require laravel/installer
 composer create-project --prefer-dist laravel/laravel blog
 sudo chgrp -R www-data /var/www/html/blog
-#sudo chmod -R 775 /var/www/html/blog/storage
+sudo chmod -R 775 /var/www/html/blog/storage
+
+sudo systemctl restart apache2
+apachectl restart
+
 
 #sudo composer create-project laravel/laravel your-project --prefer-dist
 #sudo chgrp -R www-data /var/www/html/your-project
@@ -83,6 +86,6 @@ sudo chgrp -R www-data /var/www/html/blog
 #sudo a2dissite 000-default.conf
 #sudo a2ensite laravel.conf
 #sudo a2enmod rewrite
-sudo service apache2 restart
+#sudo service apache2 restart
 
 

@@ -35,6 +35,7 @@ cd /var/www/html
 
 sudo composer global require laravel/installer
 sudo laravel new blog
+cd /var/www/html
 sudo composer create-project --prefer-dist laravel/laravel blog
 sudo php artisan serve
 

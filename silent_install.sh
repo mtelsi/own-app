@@ -7,7 +7,30 @@ apt-get -y install apache2 php mysql-server php-mysql php-gd php-zip php-mbstrin
 echo \<center\>\<h1\>My Demo App\</h1\>\<br/\>\</center\> > /var/www/html/phpinfo.php
 echo \<\?php phpinfo\(\)\; \?\> >> /var/www/html/phpinfo.php
 apachectl restart
+
 ex /etc/apache2/apache2.conf <<EOEX
   :172 s/AllowOverride None/AllowOverride All
   :x
 EOEX
+
+EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)"
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+ACTUAL_SIGNATURE="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+
+if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]
+then
+    >&2 echo 'ERROR: Invalid installer signature'
+    rm composer-setup.php
+    exit 1
+fi
+
+php composer-setup.php --quiet
+RESULT=$?
+rm composer-setup.php
+exit $RESULT
+
+apt-get -y install composer
+composer global require laravel/installer
+laravel new blog
+composer create-project --prefer-dist laravel/laravel blog
+php artisan serve

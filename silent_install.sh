@@ -1,5 +1,3 @@
-cd /
-sudo -i
 sudo apt-get -y update
 dbpass=$1
 export DEBIAN_FRONTEND=noninteractive
@@ -36,8 +34,6 @@ php composer-setup.php --quiet \
 RESULT=$? \
 rm composer-setup.php \
 exit $RESULT
-
-sudo -i
 
 cd /var/www/html
 

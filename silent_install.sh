@@ -9,6 +9,8 @@ sudo apt-get -y install php-mysql php-gd php-zip php-mbstring php-simplexml php-
 echo \<center\>\<h1\>My Demo App\</h1\>\<br/\>\</center\> > /var/www/html/phpinfo.php
 echo \<\?php phpinfo\(\)\; \?\> >> /var/www/html/phpinfo.php
 
+apachectl restart
+
 ex /etc/apache2/apache2.conf <<EOEX \
   :172 s/AllowOverride None/AllowOverride All \
   :x \

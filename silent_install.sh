@@ -3,8 +3,8 @@ dbpass=$1
 export DEBIAN_FRONTEND=noninteractive
 echo mysql-server-5.7.29 mysql-server/root_password password $dbpass | debconf-set-selections
 echo mysql-server-5.7.29 mysql-server/root_password_again password $dbpass | debconf-set-selections
-apt-get -y install apache2 php mysql-server php-mysql 
-apt-get -y install php-gd php-zip php-mbstring php-simplexml php-curl php-xml php-xmlrpc php-intl
+sudo apt-get -y install apache2 php mysql-server php-mysql 
+sudo apt-get -y install php-gd php-zip php-mbstring php-simplexml php-curl php-xml php-xmlrpc php-intl
 echo \<center\>\<h1\>My Demo App\</h1\>\<br/\>\</center\> > /var/www/html/phpinfo.php
 echo \<\?php phpinfo\(\)\; \?\> >> /var/www/html/phpinfo.php
 
@@ -31,7 +31,7 @@ RESULT=$?
 rm composer-setup.php
 exit $RESULT
 
-apt-get -y install composer
+sudo apt-get -y install composer
 composer global require laravel/installer
 laravel new blog
 composer create-project --prefer-dist laravel/laravel blog

@@ -23,7 +23,7 @@ then
     exit 1
 fi
 
-sudo php composer-setup.php --quiet
+php composer-setup.php --quiet
 RESULT=$?
 rm composer-setup.php
 exit $RESULT' > /home/ubuntu/installcomposer.sh

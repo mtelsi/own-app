@@ -5,8 +5,15 @@ export DEBIAN_FRONTEND=noninteractive
 echo mysql-server-5.7.29 mysql-server/root_password password $dbpass | debconf-set-selections
 echo mysql-server-5.7.29 mysql-server/root_password_again password $dbpass | debconf-set-selections
 
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
 sudo apt-get -y install apache2 php mysql-server
+sudo apt-get -y install php libapache2-mod-php
+sudo systemctl restart apache2
 sudo apt-get -y install php-mysql php-gd php-zip php-mbstring php-simplexml php-curl php-xml php-xmlrpc php-intl
+echo \<center\>\<h1\>My Demo App\</h1\>\<br/\>\</center\> > /var/www/html/phpinfo.php
+echo \<\?php phpinfo\(\)\; \?\> >> /var/www/html/phpinfo.php
+
 apachectl restart
 
 ex /etc/apache2/apache2.conf <<EOEX
@@ -44,28 +51,32 @@ sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 sudo /sbin/mkswap /var/swap.1
 sudo /sbin/swapon /var/swap.1
 
-cd /tmp
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /./bin/composer
+#cd /tmp
+#curl -sS https://getcomposer.org/installer | php
+#sudo mv composer.phar /./bin/composer
 cd /var/www/html
-sudo composer create-project laravel/laravel your-project --prefer-dist
-sudo chgrp -R www-data /var/www/html/your-project
-sudo chmod -R 775 /var/www/html/your-project/storage
-cd /etc/apache2/sites-available
 
-sudo echo "<VirtualHost *:80>
-    ServerName yourdomain.tld
+composer global require laravel/installer
+composer create-project --prefer-dist laravel/laravel blog
 
-    ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/html/your-project/public
+#sudo composer create-project laravel/laravel your-project --prefer-dist
+#sudo chgrp -R www-data /var/www/html/your-project
+#sudo chmod -R 775 /var/www/html/your-project/storage
+#cd /etc/apache2/sites-available
 
-    <Directory /var/www/html/your-project>
-        AllowOverride All
-    </Directory>
+#sudo echo "<VirtualHost *:80>
+ #   ServerName yourdomain.tld
 
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>" > /etc/apache2/sites-available/laravel.conf
+ #   ServerAdmin webmaster@localhost
+ #   DocumentRoot /var/www/html/your-project/public
+
+ #  <Directory /var/www/html/your-project>
+ #      AllowOverride All
+ #  </Directory>
+
+ #  ErrorLog ${APACHE_LOG_DIR}/error.log
+ #  CustomLog ${APACHE_LOG_DIR}/access.log combined
+ #</VirtualHost>" > /etc/apache2/sites-available/laravel.conf
 
 #sudo a2dissite 000-default.conf
 #sudo a2ensite laravel.conf

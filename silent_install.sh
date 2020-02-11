@@ -31,6 +31,12 @@ exit $RESULT' > /home/ubuntu/installcomposer.sh
 sudo chmod +x /home/ubuntu/installcomposer.sh
 sudo /home/ubuntu/installcomposer.sh
 
+free -m
+
+sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+sudo /sbin/mkswap /var/swap.1
+sudo /sbin/swapon /var/swap.1
+
 cd /var/www/html
 
 composer global require laravel/installer

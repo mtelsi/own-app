@@ -1,3 +1,4 @@
+cd /
 sudo -i
 sudo apt-get -y update
 dbpass=$1

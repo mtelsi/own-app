@@ -3,9 +3,9 @@ dbpass=$1
 export DEBIAN_FRONTEND=noninteractive
 echo mysql-server-5.7.29 mysql-server/root_password password $dbpass | debconf-set-selections
 echo mysql-server-5.7.29 mysql-server/root_password_again password $dbpass | debconf-set-selections
-sudo apt-get -y install apache2 php7.2 mysql-server
+sudo apt-get -y install apache2 php mysql-server
 sudo apachectl restart
-sudo apt-get -y install php7.2-mysql php7.2-gd php7.2-zip php7.2-mbstring php7.2-simplexml php7.2-curl php7.2-xml php7.2-xmlrpc php7.2-intl
+sudo apt-get -y install php-mysql php-gd php-zip php-mbstring php-simplexml php-curl php-xml php-xmlrpc php-intl
 
 ex /etc/apache2/apache2.conf <<EOEX
   :172 s/AllowOverride None/AllowOverride All

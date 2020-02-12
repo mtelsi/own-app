@@ -52,8 +52,9 @@ php -r "unlink('composer-setup.php');"
 
 sudo mv composer.phar /./bin/composer
 
-#free -m
-#sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+free -m
+sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+
 cd /var/www/html
 
 curl -O https://devsvr18.mtel.ws/demo.sql

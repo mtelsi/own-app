@@ -56,15 +56,13 @@ cd /var/www/html
 #free -m
 #sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 
-sudo mkdir /home/ubuntu/demo_download
-
 curl -O https://devsvr18.mtel.ws/demo.sql
 
 sudo mysql --host=localhost --user=root --password=1Passw0rd357 <"/var/www/html/demo.sql"
 
-cd /
+cd /home
 
-cd /
+cd /home/ubuntu
 
 sudo echo "sudo mysql --user=root --password=1Passw0rd357
 

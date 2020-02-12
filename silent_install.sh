@@ -43,17 +43,17 @@ sudo a2enmod rewrite
 
 apachectl restart
 
-cd ~
+#cd ~
 
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('sha384', 'composer-setup.php') === 'c5b9b6d368201a9db6f74e2611495f369991b72d9c8cbd3ffbc63edff210eb73d46ffbfce88669ad33695ef77dc76976') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
+#php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+#php -r "if (hash_file('sha384', 'composer-setup.php') === 'c5b9b6d368201a9db6f74e2611495f369991b72d9c8cbd3ffbc63edff210eb73d46ffbfce88669ad33695ef77dc76976') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+#php composer-setup.php
+#php -r "unlink('composer-setup.php');"
 
-sudo mv composer.phar /./bin/composer
+#sudo mv composer.phar /./bin/composer
 
-free -m
-sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+#free -m
+#sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 
 cd /var/www/html
 

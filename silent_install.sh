@@ -108,6 +108,7 @@ apachectl restart
 #sudo a2enmod rewrite
 #sudo service apache2 restart
 
+//start demo portal
 
 cd /
 
@@ -156,18 +157,21 @@ sudo systemctl enable mysql
 //use mysql
 
 // choice 1
-//FLUSH PRIVILEGES;
-//SET PASSWORD FOR root@'localhost' = PASSWORD('newpwd');
-//FLUSH PRIVILEGES;
+//CREATE USER 'roche_db'@'%' IDENTIFIED BY '123456';
+//GRANT ALL PRIVILEGES ON *.* TO 'roche_db'@'%';
+//
+
+//#update user set authentication_string=PASSWORD("") where User='root';
+//#update user set plugin="mysql_native_password" where User='root';  # THIS LINE
+//#flush privileges;
+//#quit;
 
 // choice 2
 #UPDATE user SET Password = PASSWORD('P@ssword')
 #WHERE Host = '%' AND User = 'root';`enter code here
 
-//exit
-
 //sudo /etc/init.d/mysql stop
-
+//usr/sbin/mysqld --defaults-file=/etc/mysql/my.cnf --basedir=/usr --datadir=/var/lib/mysql --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock
 //sudo /etc/init.d/mysql start
 
 

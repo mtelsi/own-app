@@ -7,10 +7,10 @@ echo mysql-server-5.7.29 mysql-server/root_password_again password $dbpass | deb
 
 #sudo apt install software-properties-common
 #sudo add-apt-repository ppa:ondrej/php
+#sudo apt-get -y install php libapache2-mod-php
+
 
 sudo apt-get -y install apache2 php mysql-server
-
-#sudo apt-get -y install php libapache2-mod-php
 
 sudo apt-get -y install php-mysql php-gd php-zip php-mbstring php-xml php-curl php-simplexml php-xmlrpc php-intl
 
@@ -134,14 +134,41 @@ sudo systemctl enable mysql
 #sudo chmod +x /home/ubuntu/mysql_secure.sh
 #sudo /home/ubuntu/mysql_secure.sh
 
-sudo service mysql stop
 
-sudo mkdir -p /var/run/mysqld
+#UPDATE mysql.user SET Password=PASSWORD('P@ssword1234') WHERE User='root';
+#DELETE FROM mysql.user WHERE User='';
+#DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+#DROP DATABASE IF EXISTS test;
+#DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
+#FLUSH PRIVILEGES;
 
-sudo chown mysql:mysql /var/run/mysqld
 
-sudo mysqld_safe --skip-grant-tables &
+//sudo service mysql stop
 
+//sudo mkdir -p /var/run/mysqld
+
+//sudo chown mysql:mysql /var/run/mysqld
+
+//sudo mysqld_safe --skip-grant-tables &
+
+//mysql -u root
+
+//use mysql
+
+// choice 1
+//FLUSH PRIVILEGES;
+//SET PASSWORD FOR root@'localhost' = PASSWORD('newpwd');
+//FLUSH PRIVILEGES;
+
+// choice 2
+#UPDATE user SET Password = PASSWORD('P@ssword')
+#WHERE Host = '%' AND User = 'root';`enter code here
+
+//exit
+
+//sudo /etc/init.d/mysql stop
+
+//sudo /etc/init.d/mysql start
 
 
 

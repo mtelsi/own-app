@@ -108,7 +108,7 @@ apachectl restart
 #sudo a2enmod rewrite
 #sudo service apache2 restart
 
-//start demo portal
+#//start demo portal
 
 cd /
 
@@ -144,35 +144,34 @@ sudo systemctl enable mysql
 #FLUSH PRIVILEGES;
 
 
-//sudo service mysql stop
+#//sudo service mysql stop
 
-//sudo mkdir -p /var/run/mysqld
+#//sudo mkdir -p /var/run/mysqld
 
-//sudo chown mysql:mysql /var/run/mysqld
+#//sudo chown mysql:mysql /var/run/mysqld
 
-//sudo mysqld_safe --skip-grant-tables &
+#//sudo mysqld_safe --skip-grant-tables &
 
-//mysql -u root
+#//mysql -u root
 
-//use mysql
+#//use mysql
 
-// choice 1
-//CREATE USER 'roche_db'@'%' IDENTIFIED BY '123456';
-//GRANT ALL PRIVILEGES ON *.* TO 'roche_db'@'%';
-//
+#// choice 1
+#//CREATE USER 'roche_db'@'%' IDENTIFIED BY '123456';
+#//GRANT ALL PRIVILEGES ON *.* TO 'roche_db'@'%';
 
-//#update user set authentication_string=PASSWORD("") where User='root';
-//#update user set plugin="mysql_native_password" where User='root';  # THIS LINE
-//#flush privileges;
-//#quit;
+#update user set authentication_string=PASSWORD("") where User='root';
+#update user set plugin="mysql_native_password" where User='root';  # THIS LINE
+#flush privileges;
+#quit;
 
-// choice 2
+#// choice 2
 #UPDATE user SET Password = PASSWORD('P@ssword')
 #WHERE Host = '%' AND User = 'root';`enter code here
 
-//sudo /etc/init.d/mysql stop
-//usr/sbin/mysqld --defaults-file=/etc/mysql/my.cnf --basedir=/usr --datadir=/var/lib/mysql --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock
-//sudo /etc/init.d/mysql start
+#//sudo /etc/init.d/mysql stop
+#usr/sbin/mysqld --defaults-file=/etc/mysql/my.cnf --basedir=/usr --datadir=/var/lib/mysql --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock
+#//sudo /etc/init.d/mysql start
 
 
 

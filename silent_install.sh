@@ -12,6 +12,14 @@ echo mysql-server-5.7.29 mysql-server/root_password_again password $dbpass | deb
 
 sudo apt-get -y install apache2 php mysql-server
 
+echo \<center\>\<h1\>My Demo App\</h1\>\<br/\>\</center\> > /var/www/html/phpinfo.php
+echo \<\?php phpinfo\(\)\; \?\> >> /var/www/html/phpinfo.php
+
+sudo systemctl restart apache2
+
+apachectl restart
+
+
 sudo apt-get -y install php-mysql php-gd php-zip php-mbstring php-xml php-curl php-simplexml php-xmlrpc php-intl
 
 sudo apt-get -y install php-bcmath
@@ -20,17 +28,13 @@ sudo apt-get -y install php-json
 
 sudo apt-get -y install php-tokenizer
 
-echo \<center\>\<h1\>My Demo App\</h1\>\<br/\>\</center\> > /var/www/html/phpinfo.php
-echo \<\?php phpinfo\(\)\; \?\> >> /var/www/html/phpinfo.php
 
 ex /etc/apache2/apache2.conf <<EOEX
   :172 s/AllowOverride None/AllowOverride All
   :x
 EOEX
 
-sudo systemctl restart apache2
 
-apachectl restart
 
 #sudo echo 'EXPECTED_CHECKSUM="$(wget -q -O - https://composer.github.io/installer.sig)"
 #php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"

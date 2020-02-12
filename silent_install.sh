@@ -159,6 +159,8 @@ cd /
 
 #//mysql -u root
 
+sudo mysql -u root --password=1Passw0rd357
+
 #//use mysql
 
 #// choice 1

@@ -82,19 +82,23 @@ sudo composer install
 
 cd /var/www
 
-sudo chmod -R 755 html
+sudo chmod -R 755 /var/www/html
 
-sudo chmod -R o+w html/storage
+sudo chmod -R o+w /var/www/html/storage
 
 sudo mysql --user=root --password=1Passw0rd357
 
-CREATE USER 'roche_db'@'localhost' IDENTIFIED BY '123456';
+sudo echo "CREATE USER 'roche_db'@'localhost' IDENTIFIED BY '123456';
 
 GRANT ALL PRIVILEGES ON *.* TO 'roche_db'@'localhost';
 
-flush privileges;
+FLUSH PRIVILEGES;
 
-quit;
+quit;" > /home/ubuntu/roche_db.sh
+
+sudo chmod +x /home/ubuntu/roche_db.sh
+
+sudo /home/ubuntu/roche_db.sh
 
 cd /
 

@@ -87,6 +87,15 @@ sudo apt install unzip
 
 sudo unzip demo.zip -d /var/www/html
 
+
+cd /var/www
+
+sudo chmod -R 755 /var/www/html
+
+sudo chmod -R o+w /var/www/html/storage
+
+cd /var/www/html
+
 #sudo cp demo.zip /var/www/html
 
 sudo apt-get -y update
@@ -97,11 +106,11 @@ sudo composer install
 
 #sudo chmod -r 777 /var/www/html/demo
 
-cd /var/www
+#cd /var/www
 
-sudo chmod -R 755 /var/www/html
+#sudo chmod -R 755 /var/www/html
 
-sudo chmod -R o+w /var/www/html/storage
+#sudo chmod -R o+w /var/www/html/storage
 
 
 

@@ -35,6 +35,7 @@ EOEX
 sudo a2enmod rewrite
 
 #sudo systemctl restart apache2
+
 apachectl restart
 
 
@@ -53,11 +54,11 @@ sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 
 sudo mkdir /home/ubuntu/demo_download
 
-curl -O https://devsvr18.mtel.ws/demo.sql -d /home/ubuntu/demo_download
+curl -O https://devsvr18.mtel.ws/demo.sql
 
 sudo mysql --host=localhost --user=root --password=1Passw0rd357 <"/var/www/html/demo.sql"
-#//use mysql
 
+#//use mysql
 
 sudo mysql --user=root --password=1Passw0rd357
 
@@ -71,7 +72,9 @@ quit;
 
 
 cd /var/www/html
+
 #sudo composer create-project --prefer-dist laravel/laravel demo
+
 curl -O https://devsvr18.mtel.ws/demo.zip
 
 sudo apt install unzip
@@ -87,8 +90,11 @@ sudo apt-get -y install composer
 sudo composer install 
 
 #sudo chmod -r 777 /var/www/html/demo
+
 cd /var/www
+
 sudo chmod -R 755 html
+
 sudo chmod -R o+w html/storage
 
 

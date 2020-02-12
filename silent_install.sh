@@ -32,12 +32,12 @@ ex /etc/apache2/apache2.conf <<EOEX
   :x
 EOEX
 
+
 sudo a2enmod rewrite
 
 #sudo systemctl restart apache2
 
 apachectl restart
-
 
 #cd /var/www/html
 #sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -58,22 +58,7 @@ curl -O https://devsvr18.mtel.ws/demo.sql
 
 sudo mysql --host=localhost --user=root --password=1Passw0rd357 <"/var/www/html/demo.sql"
 
-#//use mysql
-
-sudo mysql --user=root --password=1Passw0rd357
-
-CREATE USER 'roche_db'@'localhost' IDENTIFIED BY '123456';
-
-GRANT ALL PRIVILEGES ON *.* TO 'roche_db'@'localhost';
-
-flush privileges;
-
-quit;
-
-
 cd /var/www/html
-
-#sudo composer create-project --prefer-dist laravel/laravel demo
 
 curl -O https://devsvr18.mtel.ws/demo.zip
 
@@ -97,6 +82,18 @@ sudo chmod -R 755 html
 
 sudo chmod -R o+w html/storage
 
+
+sudo mysql --user=root --password=1Passw0rd357
+
+CREATE USER 'roche_db'@'localhost' IDENTIFIED BY '123456';
+
+GRANT ALL PRIVILEGES ON *.* TO 'roche_db'@'localhost';
+
+flush privileges;
+
+quit;
+
+cd /
 
 
 

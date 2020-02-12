@@ -28,6 +28,10 @@ ex /etc/apache2/apache2.conf <<EOEX
   :x
 EOEX
 
+sudo systemctl restart apache2
+
+apachectl restart
+
 #sudo echo 'EXPECTED_CHECKSUM="$(wget -q -O - https://composer.github.io/installer.sig)"
 #php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 #ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
@@ -79,9 +83,6 @@ sudo chgrp -R www-data /var/www/html/blog
 
 sudo chmod -R 775 /var/www/html/blog/storage
 
-sudo systemctl restart apache2
-
-apachectl restart
 
 
 #sudo composer create-project laravel/laravel your-project --prefer-dist
@@ -112,15 +113,15 @@ apachectl restart
 
 cd /
 
-sudo ufw allow ssh
+#//sudo ufw allow ssh
 
-yes | sudo ufw enable
+#//yes | sudo ufw enable
 
-sudo ufw allow mysql
+#//sudo ufw allow mysql
 
-sudo systemctl start mysql
+#//sudo systemctl start mysql
 
-sudo systemctl enable mysql
+#//sudo systemctl enable mysql
 
 #sudo apt-get -y install aptitude
 #sudo aptitude -y install expect

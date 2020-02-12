@@ -57,12 +57,18 @@ curl -O https://devsvr18.mtel.ws/demo.sql -d /home/ubuntu/demo_download
 
 sudo mysql --host=localhost --user=root --password=1Passw0rd357 <"/var/www/html/demo.sql"
 #//use mysql
-sudo mysql -u root --password=1Passw0rd357
-#// choice 1
+
+
+sudo mysql --user=root --password=1Passw0rd357
+
 CREATE USER 'roche_db'@'localhost' IDENTIFIED BY '123456';
+
 GRANT ALL PRIVILEGES ON *.* TO 'roche_db'@'localhost';
+
 flush privileges;
+
 quit;
+
 
 cd /var/www/html
 #sudo composer create-project --prefer-dist laravel/laravel demo

@@ -64,19 +64,13 @@ cd /home
 
 cd /home/ubuntu
 
-sudo echo "sudo mysql --user=root --password=1Passw0rd357
+sudo mysql --user=root --password=1Passw0rd357 -e "CREATE USER 'roche_db'@'localhost' IDENTIFIED BY '123456';"
 
-CREATE USER 'roche_db'@'localhost' IDENTIFIED BY '123456';
+sudo mysql --user=root --password=1Passw0rd357 -e "GRANT ALL PRIVILEGES ON *.* TO 'roche_db'@'localhost';"
 
-GRANT ALL PRIVILEGES ON *.* TO 'roche_db'@'localhost';
+sudo mysql --user=root --password=1Passw0rd357 -e "FLUSH PRIVILEGES;"
 
-FLUSH PRIVILEGES;
-
-quit;" > /home/ubuntu/roche_db.sh
-
-sudo chmod +x /home/ubuntu/roche_db.sh
-
-sudo /home/ubuntu/roche_db.sh
+sudo mysql --user=root --password=1Passw0rd357 -e "quit;"
 
 
 cd /var/www/html
@@ -90,9 +84,9 @@ sudo unzip demo.zip -d /var/www/html
 
 cd /var/www
 
-sudo chmod -R 755 /var/www/html
+sudo chmod 777 /var/www/html
 
-sudo chmod -R o+w /var/www/html/storage
+sudo chmod o+w /var/www/html/storage
 
 cd /var/www/html
 
@@ -108,9 +102,9 @@ sudo composer install
 
 #cd /var/www
 
-#sudo chmod -R 755 /var/www/html
+#sudo chmod –recursiven 755 /var/www/html
 
-#sudo chmod -R o+w /var/www/html/storage
+#sudo chmod –recursiven o+w /var/www/html/storage
 
 
 

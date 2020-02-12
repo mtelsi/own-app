@@ -1,9 +1,12 @@
-#!/bin/sh
 
 sudo apt-get -y update
+
 dbpass=$1
+
 export DEBIAN_FRONTEND=noninteractive
+
 echo mysql-server-5.7.29 mysql-server/root_password password $dbpass | debconf-set-selections
+
 echo mysql-server-5.7.29 mysql-server/root_password_again password $dbpass | debconf-set-selections
 
 #sudo apt install software-properties-common
@@ -40,18 +43,18 @@ sudo a2enmod rewrite
 
 apachectl restart
 
-#cd /var/www/html
-#sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-#sudo php -r "if (hash_file('sha384', 'composer-setup.php') === 'c5b9b6d368201a9db6f74e2611495f369991b72d9c8cbd3ffbc63edff210eb73d46ffbfce88669ad33695ef77dc76976') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-#sudo php composer-setup.php
-#sudo php -r "unlink('composer-setup.php');"
+cd /var/www/html
+sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+sudo php -r "if (hash_file('sha384', 'composer-setup.php') === 'c5b9b6d368201a9db6f74e2611495f369991b72d9c8cbd3ffbc63edff210eb73d46ffbfce88669ad33695ef77dc76976') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+sudo php composer-setup.php
+sudo php -r "unlink('composer-setup.php');"
 
 cd /var/www/html
 
-#sudo mv composer.phar /./bin/composer
+sudo mv composer.phar /./bin/composer
 
-free -m
-sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+#free -m
+s#udo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 
 sudo mkdir /home/ubuntu/demo_download
 
@@ -69,7 +72,7 @@ sudo unzip demo.zip -d /var/www/html
 
 #sudo cp demo.zip /var/www/html
 
-cd /var/www/html
+sudo apt-get -y update
 
 sudo apt-get -y install composer
 
@@ -83,7 +86,6 @@ sudo chmod -R 755 html
 
 sudo chmod -R o+w html/storage
 
-
 sudo mysql --user=root --password=1Passw0rd357
 
 CREATE USER 'roche_db'@'localhost' IDENTIFIED BY '123456';
@@ -95,13 +97,6 @@ flush privileges;
 quit;
 
 cd /
-
-
-
-
-
-
-
 
 #update user set authentication_string=PASSWORD("") where User='root';
 #update user set plugin="mysql_native_password" where User='root';  # THIS LINE

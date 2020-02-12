@@ -43,26 +43,23 @@ sudo a2enmod rewrite
 
 apachectl restart
 
-#cd /var/www/html
-#sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-#sudo php -r "if (hash_file('sha384', 'composer-setup.php') === 'c5b9b6d368201a9db6f74e2611495f369991b72d9c8cbd3ffbc63edff210eb73d46ffbfce88669ad33695ef77dc76976') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-#sudo php composer-setup.php
-#sudo php -r "unlink('composer-setup.php');"
+cd ~
 
-cd /var/www/html
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'c5b9b6d368201a9db6f74e2611495f369991b72d9c8cbd3ffbc63edff210eb73d46ffbfce88669ad33695ef77dc76976') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
 
-#sudo mv composer.phar /./bin/composer
+sudo mv composer.phar /./bin/composer
 
 #free -m
 #sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+cd /var/www/html
 
 curl -O https://devsvr18.mtel.ws/demo.sql
 
 sudo mysql --host=localhost --user=root --password=1Passw0rd357 <"/var/www/html/demo.sql"
 
-cd /home
-
-cd /home/ubuntu
 
 sudo mysql --user=root --password=1Passw0rd357 -e "CREATE USER 'roche_db'@'localhost' IDENTIFIED BY '123456';"
 
@@ -72,8 +69,7 @@ sudo mysql --user=root --password=1Passw0rd357 -e "FLUSH PRIVILEGES;"
 
 sudo mysql --user=root --password=1Passw0rd357 -e "quit;"
 
-
-cd /var/www/html
+#cd /var/www/html
 
 curl -O https://devsvr18.mtel.ws/demo.zip
 
@@ -81,45 +77,11 @@ sudo apt install unzip
 
 sudo unzip demo.zip -d /var/www/html
 
-
-cd /var/www
-
-sudo chmod 777 /var/www/html
-
-sudo chmod o+w /var/www/html/storage
-
-cd /var/www/html
-
-#sudo cp demo.zip /var/www/html
-
 sudo apt-get -y update
-
 sudo apt-get -y install composer
-
 sudo composer install 
 
-#sudo chmod -r 777 /var/www/html/demo
-
-#cd /var/www
-
-#sudo chmod –recursiven 755 /var/www/html
-
-#sudo chmod –recursiven o+w /var/www/html/storage
-
-
-
-#update user set authentication_string=PASSWORD("") where User='root';
-#update user set plugin="mysql_native_password" where User='root';  # THIS LINE
-#flush privileges;
-#quit;
-
-#// choice 2
-#UPDATE user SET Password = PASSWORD('P@ssword')
-#WHERE Host = '%' AND User = 'root';`enter code here
-
-#//sudo /etc/init.d/mysql stop
-#usr/sbin/mysqld --defaults-file=/etc/mysql/my.cnf --basedir=/usr --datadir=/var/lib/mysql --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock
-#//sudo /etc/init.d/mysql start
-
-
+cd /var/www
+sudo chmod -R 777 html
+sudo chmod -R o+w html/storage
 

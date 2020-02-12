@@ -121,9 +121,26 @@ sudo systemctl start mysql
 
 sudo systemctl enable mysql
 
-sudo apt-get -y install aptitude
+#sudo apt-get -y install aptitude
+#sudo aptitude -y install expect
+#sudo mysql -u root <<-EOF
+#UPDATE mysql.user SET Password=PASSWORD('P@ssw0rd1234') WHERE User='root';
+#DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+#DELETE FROM mysql.user WHERE User='';
+#DELETE FROM mysql.db WHERE Db='test' OR Db='test_%';
+#FLUSH PRIVILEGES;
+#EOF
+#aptitude -y purge expect' > /home/ubuntu/mysql_secure.sh
+#sudo chmod +x /home/ubuntu/mysql_secure.sh
+#sudo /home/ubuntu/mysql_secure.sh
 
-sudo aptitude -y install expect
+sudo service mysql stop
+
+sudo mkdir -p /var/run/mysqld
+
+sudo chown mysql:mysql /var/run/mysqld
+
+sudo mysqld_safe --skip-grant-tables &
 
 
 

@@ -15,8 +15,6 @@ sudo apt-get -y install apache2 php mysql-server
 echo \<center\>\<h1\>My Demo App\</h1\>\<br/\>\</center\> > /var/www/html/phpinfo.php
 echo \<\?php phpinfo\(\)\; \?\> >> /var/www/html/phpinfo.php
 
-sudo systemctl restart apache2
-
 apachectl restart
 
 
@@ -34,6 +32,8 @@ ex /etc/apache2/apache2.conf <<EOEX
   :x
 EOEX
 
+#sudo systemctl restart apache2
+apachectl restart
 
 
 #sudo echo 'EXPECTED_CHECKSUM="$(wget -q -O - https://composer.github.io/installer.sig)"

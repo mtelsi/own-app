@@ -84,4 +84,3 @@ sudo composer install
 cd /var/www
 sudo chmod -R 777 html
 sudo chmod -R o+w html/storage
-

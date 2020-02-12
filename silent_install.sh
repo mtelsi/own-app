@@ -165,7 +165,7 @@ curl -O https://devsvr18.mtel.ws/demo.sql -d /home/ubuntu/demo_download
 
 
 
-sudo mysql --host=localhost --user=root --password=1Passw0rd357 <"/home/ubuntu/demo_download/demo.sql"
+sudo mysql --host=localhost --user=root --password=1Passw0rd357 <"/var/www/html/demo.sql"
 #//use mysql
 sudo mysql -u root --password=1Passw0rd357
 #// choice 1

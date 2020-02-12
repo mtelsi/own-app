@@ -109,3 +109,22 @@ apachectl restart
 #sudo service apache2 restart
 
 
+cd /
+
+sudo ufw allow ssh
+
+yes | sudo ufw enable
+
+sudo ufw allow mysql
+
+sudo systemctl start mysql
+
+sudo systemctl enable mysql
+
+sudo apt-get -y install aptitude
+
+sudo aptitude -y install expect
+
+
+
+
